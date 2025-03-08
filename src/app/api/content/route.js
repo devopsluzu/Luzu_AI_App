@@ -106,12 +106,22 @@
 
 import { NextResponse } from "next/server";
 import Groq from "groq-sdk";
-const api = "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";
+import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
 
-const groq = new Groq({ apiKey: api });
+const client = new SecretManagerServiceClient();
+
+async function getSecret() {
+  const [version] = await client.accessSecretVersion({
+    name: "projects/YOUR_PROJECT_ID/secrets/GROQ_API_KEY/versions/latest",
+  });
+  return version.payload.data.toString();
+}
 
 export async function POST(request) {
     try {
+        const apiKey = await getSecret(); // Fetch API key dynamically
+    const groq = new Groq({ apiKey });
+
         const { message } = await request.json();
         if (!message) {
             return NextResponse.json(
@@ -162,12 +172,12 @@ export async function POST(request) {
         // Try the primary model first
         let responseMessage;
         try {
-            responseMessage = await generateBlog(prompt, "gemma2-9b-it");
+            responseMessage = await generateBlog(prompt, "gemma2-9b-it",groq);
             // responseMessage = await generateBlog(prompt, "llama-3.3-70b-versatile");
 
         } catch (error) {
             console.warn("Primary model failed, switching to fallback model:", error);
-            responseMessage = await generateBlog(prompt, "llama-3.3-70b-versatile");
+            responseMessage = await generateBlog(prompt, "llama-3.3-70b-versatile",groq);
         }
 
         return NextResponse.json({ response: responseMessage });
@@ -181,7 +191,7 @@ export async function POST(request) {
 }
 
 // Helper function to call the Groq API with a specified model
-async function generateBlog(prompt, model) {
+async function generateBlog(prompt, model,groq) {
     const chatCompletion = await groq.chat.completions.create({
         messages: [
             {

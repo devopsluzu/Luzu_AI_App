@@ -68,12 +68,22 @@
 
 import { NextResponse } from 'next/server';
 import Groq from 'groq-sdk';
-const api = "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";
+import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
 
-const groq = new Groq({ apiKey: api});
+const client = new SecretManagerServiceClient();
+
+async function getSecret() {
+  const [version] = await client.accessSecretVersion({
+    name: "projects/YOUR_PROJECT_ID/secrets/GROQ_API_KEY/versions/latest",
+  });
+  return version.payload.data.toString();
+}
 
 export async function POST(request) {
   try {
+    const apiKey = await getSecret(); // Fetch API key dynamically
+    const groq = new Groq({ apiKey });
+
     const { messages } = await request.json();
     if (!messages || messages.length === 0) {
       return NextResponse.json(
@@ -99,10 +109,10 @@ export async function POST(request) {
     // Try the primary model first
     let title;
     try {
-      title = await generateTitle(instruction, recentMessages, 'gemma-2b-9bit');
+      title = await generateTitle(instruction, recentMessages, 'gemma-2b-9bit',groq);
     } catch (error) {
       console.warn('Primary model failed, switching to fallback model:', error);
-      title = await generateTitle(instruction, recentMessages, 'llama-3.3-70b-versatile');
+      title = await generateTitle(instruction, recentMessages, 'llama-3.3-70b-versatile',groq);
     }
 
     // Ensure title is valid and formatted
@@ -120,7 +130,7 @@ export async function POST(request) {
 }
 
 // Helper function to call the Groq API with a specified model
-async function generateTitle(instruction, recentMessages, model) {
+async function generateTitle(instruction, recentMessages, model,groq) {
   const chatCompletion = await groq.chat.completions.create({
     messages: [
       { role: 'system', content: instruction },

@@ -89,12 +89,23 @@
 
 import { NextResponse } from "next/server";
 import Groq from "groq-sdk";
-const api = "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";
+import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
 
-const groq = new Groq({ apiKey: api });
+const client = new SecretManagerServiceClient();
+
+async function getSecret() {
+  const [version] = await client.accessSecretVersion({
+    name: "projects/YOUR_PROJECT_ID/secrets/GROQ_API_KEY/versions/latest",
+  });
+  return version.payload.data.toString();
+}
 
 export async function POST(request) {
   try {
+
+    const apiKey = await getSecret(); // Fetch API key dynamically
+    const groq = new Groq({ apiKey });
+
     const { keyword, country } = await request.json();
     if (!keyword || !country) {
       return NextResponse.json(
@@ -147,10 +158,10 @@ export async function POST(request) {
     // Try the primary model first
     let analysisResult;
     try {
-      analysisResult = await analyzeKeyword([prompt, userMessage], "gemma2-9b-it");
+      analysisResult = await analyzeKeyword([prompt, userMessage], "gemma2-9b-it",groq);
     } catch (error) {
       console.warn("Primary model failed, switching to fallback model:", error);
-      analysisResult = await analyzeKeyword([prompt, userMessage], "llama-3.3-70b-versatile");
+      analysisResult = await analyzeKeyword([prompt, userMessage], "llama-3.3-70b-versatile",groq);
     }
 
     return NextResponse.json({ analysisResult });
@@ -164,7 +175,7 @@ export async function POST(request) {
 }
 
 // Helper function to call the Groq API with a specified model
-async function analyzeKeyword(messages, model) {
+async function analyzeKeyword(messages, model,groq) {
   const chatCompletion = await groq.chat.completions.create({
     messages: messages,
     model: model,
