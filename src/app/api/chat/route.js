@@ -68,7 +68,8 @@ async function getSecret() {
   const [version] = await client.accessSecretVersion({
     name: `projects/592134571427/secrets/GROQ_API_KEY/versions/latest`,
   });
-  return version.payload.data.toString();
+  const apiKey = version.payload.data.toString('utf8').trim(); 
+  return apiKey;
 }
 
 export async function POST(request) {
@@ -82,20 +83,19 @@ export async function POST(request) {
     }
 
     // Fetch API key securely
-    const apiKey = await getSecret('GROQ_API_KEY');
-    console.log('API KEY:',apiKey)
-    const groq = new Groq({ apiKey });
-
+   const apiKey = await getSecret();
+   console.log("Using API Key:", JSON.stringify(apiKey));  // Check for unexpected characters
+   const groq = new Groq({ apiKey: apiKey.trim() });  // Ensure trimming
     // Instruction for the chatbot
     const instruction = "You are an AI assistant designed to provide helpful responses. If the user asks for the AI's name, respond with 'Prfec AI.'";
 
     // Try the primary model first
     let responseMessage;
     try {
-      responseMessage = await generateResponse(groq, instruction, message, 'gemma-2b-9bit');
+      responseMessage = await generateResponse(groq, instruction, message, 'llama3-8b-8192');
     } catch (error) {
       console.warn('Primary model failed, switching to fallback model:', error);
-      responseMessage = await generateResponse(groq, instruction, message, 'llama-3.3-70b-versatile');
+      responseMessage = await generateResponse(groq, instruction, message, 'mixtral-8x7b-32768');
     }
 
     return NextResponse.json({ response: responseMessage });
@@ -110,17 +110,20 @@ export async function POST(request) {
 
 // Helper function to call the Groq API with a specified model
 async function generateResponse(groq, instruction, message, model) {
-  const chatCompletion = await groq.chat.completions.create({
-    messages: [
-      { role: 'system', content: instruction },
-      { role: 'user', content: message },
-    ],
-    model: model,
-  });
-
-  return chatCompletion.choices[0]?.message?.content || 'No response';
+  try {
+    const chatCompletion = await groq.chat.completions.create({
+      model,
+      messages: [
+        { role: 'system', content: instruction },
+        { role: 'user', content: message }
+      ]
+    });
+    return chatCompletion.choices[0].message.content;
+  } catch (error) {
+    console.error("Error calling Groq API:", error);
+    throw error; // Rethrow to allow fallback to work
+  }
 }
-
 
 
 

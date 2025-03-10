@@ -29,7 +29,7 @@ const Chatbot = ({ chatId }) => {
     const { user } = UserAuth();
     const markdown = new Marked();
   const{chatPromptCount, setChatPromptCount} = useChatPrompt(); // Use the keyword prompt context
-  let maxPrompts = 3; 
+  let maxPrompts = 100; 
 
   useEffect(() => {
     if (!user) return;
@@ -270,7 +270,8 @@ const Chatbot = ({ chatId }) => {
                 <div className="prfec-chat-msg-container">
                     {messages.map((msg, index) => (
                         <div key={index} className={`tc-msgs ${msg.role === "user" ? "user" : "bot"}`}>
-                            <div dangerouslySetInnerHTML={{ __html: markdown.parse(msg.content) }} />
+                            <div dangerouslySetInnerHTML={{ __html: markdown.parse(String(msg.content)) }} />
+
                             {msg.role === "bot" &&
                             <div className='tc-msgs-events'>
                                 <Image src={copy} width={12} height={13} alt='copy' onClick={() => copyToClipboard(msg.content)}/>

@@ -111,16 +111,19 @@ import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
 const client = new SecretManagerServiceClient();
 
 async function getSecret() {
-  const [version] = await client.accessSecretVersion({
-    name: "projects/592134571427/secrets/GROQ_API_KEY/versions/latest",
-  });
-  return version.payload.data.toString();
-}
+    const [version] = await client.accessSecretVersion({
+      name: `projects/592134571427/secrets/GROQ_API_KEY/versions/latest`,
+    });
+    const apiKey = version.payload.data.toString('utf8').trim(); 
+    return apiKey;
+  }
 
 export async function POST(request) {
     try {
-        const apiKey = await getSecret(); // Fetch API key dynamically
-    const groq = new Groq({ apiKey });
+        const apiKey = await getSecret();
+console.log("Using API Key:", JSON.stringify(apiKey));  // Check for unexpected characters
+const groq = new Groq({ apiKey: apiKey.trim() });  // Ensure trimming
+
 
         const { message } = await request.json();
         if (!message) {

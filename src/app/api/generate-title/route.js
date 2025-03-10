@@ -73,16 +73,26 @@ import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
 const client = new SecretManagerServiceClient();
 
 async function getSecret() {
-  const [version] = await client.accessSecretVersion({
-    name: "projects/592134571427/secrets/GROQ_API_KEY/versions/latest",
-  });
-  return version.payload.data.toString();
+  try {
+    const [version] = await client.accessSecretVersion({
+      name: "projects/592134571427/secrets/GROQ_API_KEY/versions/latest",
+    });
+    const apiKey = version.payload?.data?.toString().trim();
+    if (!apiKey) throw new Error("Failed to retrieve valid API Key.");
+    return apiKey;
+  } catch (error) {
+    console.error("Error fetching secret from Secret Manager:", error);
+    throw new Error("API Key retrieval failed.");
+  }
 }
 
 export async function POST(request) {
   try {
-    const apiKey = await getSecret(); // Fetch API key dynamically
-    const groq = new Groq({ apiKey });
+    const apiKey = await getSecret();
+    if (!apiKey || typeof apiKey !== "string" || apiKey.trim() === "") {
+      throw new Error("Invalid API Key retrieved from Secret Manager.");
+    }
+    const groq = new Groq({ apiKey: apiKey.trim() });
 
     const { messages } = await request.json();
     if (!messages || messages.length === 0) {
@@ -109,10 +119,10 @@ export async function POST(request) {
     // Try the primary model first
     let title;
     try {
-      title = await generateTitle(instruction, recentMessages, 'gemma-2b-9bit',groq);
+      title = await generateTitle(instruction, recentMessages, 'gemma-2b-9bit', apiKey);
     } catch (error) {
       console.warn('Primary model failed, switching to fallback model:', error);
-      title = await generateTitle(instruction, recentMessages, 'llama-3.3-70b-versatile',groq);
+      title = await generateTitle(instruction, recentMessages, 'llama-3.3-70b-versatile', apiKey);
     }
 
     // Ensure title is valid and formatted
@@ -130,18 +140,20 @@ export async function POST(request) {
 }
 
 // Helper function to call the Groq API with a specified model
-async function generateTitle(instruction, recentMessages, model,groq) {
+async function generateTitle(instruction, recentMessages, model, apiKey) {
+  const groq = new Groq({ apiKey });
+
   const chatCompletion = await groq.chat.completions.create({
     messages: [
       { role: 'system', content: instruction },
-      { role: 'user', content: recentMessages },
+      { role: 'user', content: recentMessages }
     ],
-    model: model,
-    max_tokens: 15, // Limit response length to ensure concise title
+    model
   });
 
-  return chatCompletion.choices[0]?.message?.content?.trim() || 'New Chat';
+  return chatCompletion.choices[0]?.message?.content || 'New Chat';
 }
+
 
 
 // import { NextResponse } from 'next/server';
