@@ -104,6 +104,7 @@ export async function POST(request) {
   try {
 
     const apiKey = await getSecret(); // Fetch API key dynamically
+    console.log(apiKey)
     const groq = new Groq({ apiKey });
 
     const { keyword, country } = await request.json();

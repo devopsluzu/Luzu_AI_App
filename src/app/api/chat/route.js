@@ -92,10 +92,10 @@ export async function POST(request) {
     // Try the primary model first
     let responseMessage;
     try {
-      responseMessage = await generateResponse(groq, instruction, message, 'llama3-8b-8192');
+      responseMessage = await generateResponse(groq, instruction, message, 'gemma2-9b-it');
     } catch (error) {
       console.warn('Primary model failed, switching to fallback model:', error);
-      responseMessage = await generateResponse(groq, instruction, message, 'mixtral-8x7b-32768');
+      responseMessage = await generateResponse(groq, instruction, message, 'llama-3.3-70b-versatil');
     }
 
     return NextResponse.json({ response: responseMessage });

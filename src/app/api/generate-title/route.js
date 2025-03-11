@@ -119,7 +119,7 @@ export async function POST(request) {
     // Try the primary model first
     let title;
     try {
-      title = await generateTitle(instruction, recentMessages, 'gemma-2b-9bit', apiKey);
+      title = await generateTitle(instruction, recentMessages, 'gemma2-9b-it', apiKey);
     } catch (error) {
       console.warn('Primary model failed, switching to fallback model:', error);
       title = await generateTitle(instruction, recentMessages, 'llama-3.3-70b-versatile', apiKey);
