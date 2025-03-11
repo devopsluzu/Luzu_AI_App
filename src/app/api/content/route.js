@@ -121,7 +121,7 @@ async function getSecret() {
 export async function POST(request) {
     try {
         const apiKey = await getSecret();
-console.log("Using API Key:", JSON.stringify(apiKey));  // Check for unexpected characters
+// console.log("Using API Key:", JSON.stringify(apiKey));  // Check for unexpected characters
 const groq = new Groq({ apiKey: apiKey.trim() });  // Ensure trimming
 
 

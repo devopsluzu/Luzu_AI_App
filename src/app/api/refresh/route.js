@@ -65,7 +65,7 @@ async function getSecret() {
   const [version] = await client.accessSecretVersion({
     name: "projects/592134571427/secrets/GROQ_API_KEY/versions/latest",
   });
-  return version.payload.data.toString();
+  return version.payload.data.toString().trim();
 }
 
 export async function POST(request) {

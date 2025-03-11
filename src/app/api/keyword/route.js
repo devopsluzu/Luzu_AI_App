@@ -97,14 +97,14 @@ async function getSecret() {
   const [version] = await client.accessSecretVersion({
     name: "projects/592134571427/secrets/GROQ_API_KEY/versions/latest",
   });
-  return version.payload.data.toString();
+  return version.payload.data.toString().trim();
 }
 
 export async function POST(request) {
   try {
 
     const apiKey = await getSecret(); // Fetch API key dynamically
-    console.log(apiKey)
+    // console.log(apiKey)
     const groq = new Groq({ apiKey });
 
     const { keyword, country } = await request.json();

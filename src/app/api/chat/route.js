@@ -84,7 +84,7 @@ export async function POST(request) {
 
     // Fetch API key securely
    const apiKey = await getSecret();
-   console.log("Using API Key:", JSON.stringify(apiKey));  // Check for unexpected characters
+  //  console.log("Using API Key:", JSON.stringify(apiKey));  // Check for unexpected characters
    const groq = new Groq({ apiKey: apiKey.trim() });  // Ensure trimming
     // Instruction for the chatbot
     const instruction = "You are an AI assistant designed to provide helpful responses. If the user asks for the AI's name, respond with 'Prfec AI.'";
