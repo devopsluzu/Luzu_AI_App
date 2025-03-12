@@ -115,22 +115,22 @@ export default function KeywordGenerationAi({contentId}) {
     const planRef = ref(db, `subscriptions/${userId}/planType`);
     const snapshot = await get(planRef);
 
-    planType = snapshot.exists() ? snapshot.val() : null;
+    // planType = snapshot.exists() ? snapshot.val() : null;
     // Default limit
 
-    if (planType === "starter") {
-        maxPrompts = 50;
-    } else if (planType === "pro") {
-        maxPrompts = 150;
-    }
+    // if (planType === "starter") {
+    //     maxPrompts = 50;
+    // } else if (planType === "pro") {
+    //     maxPrompts = 150;
+    // }
 
-    if (keywordPromptCount >= maxPrompts) {
-        alert(`You have reached your daily prompt limit of ${maxPrompts}. Please try again tomorrow.`);
-        setLoading(false);
-        return;
-    }
+    // if (keywordPromptCount >= maxPrompts) {
+    //     alert(`You have reached your daily prompt limit of ${maxPrompts}. Please try again tomorrow.`);
+    //     setLoading(false);
+    //     return;
+    // }
 
-    setKeywordPromptCount((prev) => prev + 1);
+    // setKeywordPromptCount((prev) => prev + 1);
 
     const keywordId = uuidv4();
     const currentDate = Date.now(); // (Stores full UTC timestamp)
@@ -275,7 +275,7 @@ export default function KeywordGenerationAi({contentId}) {
 
 
   const currentPath = '/keyword';
-  const shouldShowKeyword = () => keyword && keywordPromptCount >= maxPrompts;
+  // const shouldShowKeyword = () => keyword && keywordPromptCount >= maxPrompts;
 
 return (
     <div className="keyword-generator">

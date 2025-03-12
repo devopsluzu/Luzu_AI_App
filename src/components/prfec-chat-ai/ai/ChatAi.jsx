@@ -141,19 +141,19 @@ const Chatbot = ({ chatId }) => {
 
     // Default limit
 
-    if (planType === "starter") {
-        maxPrompts = 50;
-    } else if (planType === "pro") {
-        maxPrompts = 150;
-    }
+    // if (planType === "starter") {
+    //     maxPrompts = 50;
+    // } else if (planType === "pro") {
+    //     maxPrompts = 150;
+    // }
 
-    if (chatPromptCount >= maxPrompts) {
-        alert(`You have reached your daily prompt limit of ${maxPrompts}. Please try again tomorrow.`);
-        setLoading(false);
-        return;
-    }
+    // if (chatPromptCount >= maxPrompts) {
+    //     alert(`You have reached your daily prompt limit of ${maxPrompts}. Please try again tomorrow.`);
+    //     setLoading(false);
+    //     return;
+    // }
 
-    setChatPromptCount((prev) => prev + 1);
+    // setChatPromptCount((prev) => prev + 1);
         try {
             const res = await fetch("/api/chat", {
                 method: "POST",
@@ -257,12 +257,12 @@ const Chatbot = ({ chatId }) => {
         navigator.clipboard.writeText(text).catch(() => {});
     };
 
-    const promptLeft = planCount - chatPromptCount;
-    useEffect(() => {
-        if (promptLeft === 0) {
-          setPopupOpen(true); // Set to true, not toggle
-        }
-      }, [promptLeft]); 
+    // const promptLeft = planCount - chatPromptCount;
+    // useEffect(() => {
+    //     if (promptLeft === 0) {
+    //       setPopupOpen(true); // Set to true, not toggle
+    //     }
+    //   }, [promptLeft]); 
     
     return (
         <div className="prfec-chat">

@@ -78,7 +78,7 @@ export const NavbarWhite = () => {
         <div className="navbar-contents">
           <Link href='https://business.prfec.ai/'>Services</Link>
           <Link href='https://blog.prfec.ai/'>Resources</Link>
-          <Link href='/pricing'>Pricing</Link>
+          {/* <Link href='/pricing'>Pricing</Link> */}
 
           {/* <div className="navbar-contents-image">
             <Image src={bell} width={16} height={16} alt="notification" />
@@ -93,7 +93,7 @@ export const NavbarWhite = () => {
               <div className="settings" onClick={() => handleNavigation("/settings/profile")}>Settings</div>
               {/* <div className="appearance" onClick={handleThemeClick}>Appearance {themeClick && <Theme />}</div>
               <div className="help">Help</div> */}
-              <div className="pricing" onClick={() => handleNavigation("/pricing")}>Pricing</div>
+              {/* <div className="pricing" onClick={() => handleNavigation("/pricing")}>Pricing</div> */}
               <div onClick={handleLogOut}>Logout</div>
             </div>
           )}
@@ -115,7 +115,7 @@ export const NavbarWhite = () => {
             <Link href='/competitor'>Competitor Analysis</Link>
             <div className='navbar-menu-contents'>
               <div className="settings" onClick={() => handleNavigation("/settings/profile")}>Settings</div>
-              <div className="pricing" onClick={() => handleNavigation("/pricing")}>Pricing</div>
+              {/* <div className="pricing" onClick={() => handleNavigation("/pricing")}>Pricing</div> */}
               <div className='' onClick={handleLogOut}>Logout</div>
             </div>
           </div>

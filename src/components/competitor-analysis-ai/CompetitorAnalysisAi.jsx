@@ -152,17 +152,17 @@ const sanitizeKeys = (obj) => {
     const planRef = ref(db, `subscriptions/${userId}/planType`);
     const snapshot = await get(planRef);
   
-    let planType = snapshot.exists() ? snapshot.val() : null;
-    let maxPrompts = planType === "starter" ? 50 : planType === "pro" ? 150 : 3;
+    // let planType = snapshot.exists() ? snapshot.val() : null;
+    // let maxPrompts = planType === "starter" ? 50 : planType === "pro" ? 150 : 3;
   
-    if (competitorPromptCount >= maxPrompts)
-       {
-      alert(`You have reached your daily prompt limit of ${maxPrompts}. Please try again tomorrow.`);
-      setLoading(false);
-      return;
-    }
+    // if (competitorPromptCount >= maxPrompts)
+    //    {
+    //   alert(`You have reached your daily prompt limit of ${maxPrompts}. Please try again tomorrow.`);
+    //   setLoading(false);
+    //   return;
+    // }
   
-    setCompetitorPromptCount((prev) => prev + 1);
+    // setCompetitorPromptCount((prev) => prev + 1);
   
     try {
       // Validate domain using WHOIS API

@@ -502,9 +502,9 @@ const AiDashboard = ({ menuOpen, setMenuOpen }) => {
   </div>
 </div> */}
 
-      <div className='chat-dashboard-prompts-left'>
+      {/* <div className='chat-dashboard-prompts-left'>
         <p>Remaining Prompts: {promptLeft}/{planCount}</p>
-      </div>
+      </div> */}
 
       <div className="chat-dashboard-account">
           {openSetting && (
@@ -518,9 +518,9 @@ const AiDashboard = ({ menuOpen, setMenuOpen }) => {
 
                   </div>
               </div>
-              <Link href='/pricing' className='chat-dashboard-settings-logout' style={{paddingBottom:"10px"}}>
+              {/* <Link href='/pricing' className='chat-dashboard-settings-logout' style={{paddingBottom:"10px"}}>
                 Upgrade
-              </Link>
+              </Link> */}
               <div className='chat-dashboard-settings-logout' onClick={logOut}>
                 Logout
               </div>
