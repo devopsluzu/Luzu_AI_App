@@ -67,7 +67,9 @@ export default function KeywordGenerationAi({contentId}) {
         const analysisSnapshot = await get(keywordAnalysisRef);
         if (analysisSnapshot.exists()) {
           setResult(analysisSnapshot.val());
-          setKeyword(id)
+          setKeyword(id);
+          setCountry(country);  // <-- Ensure country is set when loading data
+
         } else {
           console.error("No analysis data found.");
         }
@@ -295,7 +297,8 @@ return (
             <div className="k-g-country-dropdown" onClick={toggleDropdown} ref={dropdownRef}>
               <input
                 type="text"
-                value={countrySearch || (countrySearch === "" && !isDropdownOpen ? countryOptions.find(option => option.value === country)?.label : "")}
+                // value={countrySearch || (countrySearch === "" && !isDropdownOpen ? countryOptions.find(option => option.value === country)?.label : "")}
+                value={countryOptions.find(option => option.value === country)?.label || ""}
                 onChange={handleCountrySearchChange}
                 placeholder={isDropdownOpen ? "Search Country" : ""}
                 className="k-g-country-input"
