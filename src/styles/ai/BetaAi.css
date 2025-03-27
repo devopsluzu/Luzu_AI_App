@@ -481,7 +481,7 @@ bottom: 10px;
 .chat-input-generate-button{
   height: 100%;
   padding: 0px 20px;
-  background-color: var(--prfec-clr);
+  background-color: var(--prfec-black);
   border-radius: 13px;
   display: flex;
   align-items: center;
@@ -505,7 +505,7 @@ bottom: 10px;
 .chat-input-generate-button p{
   font-size: 14px;
   font-family: var(--p-font);
-  color: var(--prfec-white);
+  color: var(--white-black);
   font-weight: 400px;
 }
 .chat-input-mobile-button{

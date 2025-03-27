@@ -89,7 +89,7 @@ export async function POST(request) {
   //  console.log("Using API Key:", JSON.stringify(apiKey));  // Check for unexpected characters
    const groq = new Groq({ apiKey: apiKey.trim() });  // Ensure trimming
     // Instruction for the chatbot
-    const instruction = "You are an AI assistant designed to provide helpful responses. If the user asks for the AI's name, respond with 'Prfec AI.'";
+    const instruction = "You are an AI assistant designed to provide helpful responses. If the user asks for the AI's name, respond with 'Luzu AI.'";
 
     // Try the primary model first
     let responseMessage;

@@ -85,13 +85,13 @@
   }
   .competitor-analysis-search-input-button{
     padding: 0px 20px;
-    background-color: var(--prfec-clr);
+    background-color: var(--black-white);
     border-radius: 8px;
     font-size: 15px;
     font-family: var(--p-font);
     font-weight: 400;
-    color: var(--h-white);
-    background-color: var(--prfec-clr);
+    color: var(--white-black);
+    background-color: var(--black-white);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -105,9 +105,9 @@
   }
   
   .competitor-analysis-search-input-button.loading{
-    animation: blinking 1.5s infinite;
+    animation: blink 1.5s infinite;
     pointer-events: none; /* Prevent clicking while loading */
-    opacity: 0.7;
+    opacity: 5;
   }
   
   @media only screen and (max-width:1024px){

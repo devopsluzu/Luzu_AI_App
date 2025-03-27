@@ -311,7 +311,7 @@ const AiDashboard = ({ menuOpen, setMenuOpen }) => {
       <div className='ai-left-dashboard-container'>
 
     <Link href='/' className="ai-dashboard-logo" >
-      <Image className="ai-prfec-logo" src={Logo} alt="Logo"  />
+      <Image className="ai-luzu-logo" src={Logo} alt="Logo"  />
     </Link>
 
       <div className="chat-dashboard-new-chat">

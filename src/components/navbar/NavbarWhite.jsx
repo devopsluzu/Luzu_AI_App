@@ -73,11 +73,14 @@ export const NavbarWhite = () => {
     <div className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo" onClick={() => handleNavigation("/")}>
-          <Image className="prfec-logo" src={Logo} alt="Logo" height={20} />
+          {/* <Image className="prfec-logo" src={Logo} alt="Logo" height={20} /> */}
+          <div style={{fontSize:"16px",fontFamily:"var(--h-font)",fontWeight:"500",color:"var(--black-white)"}}>
+            Luzu AI
+          </div>
         </div>
         <div className="navbar-contents">
-          <Link href='https://business.prfec.ai/'>Services</Link>
-          <Link href='https://blog.prfec.ai/'>Resources</Link>
+          <Link href='https://business.luzu.ai/'>Services</Link>
+          <Link href='https://blog.luzu.ai/'>Resources</Link>
           {/* <Link href='/pricing'>Pricing</Link> */}
 
           {/* <div className="navbar-contents-image">

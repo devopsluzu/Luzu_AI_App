@@ -212,7 +212,7 @@ code{
 .prfec-chat-input-generate-button{
   height: 100%;
   padding: 15px 20px;
-  background-color: var(--prfec-clr);
+  background-color: var(--black-white);
   border-radius: 13px;
   display: flex;
   align-items: center;
@@ -220,7 +220,7 @@ code{
   font-size: 14px;
   font-family: var(--h-font);
   font-weight: 400;
-  color: var(--prfec-white);
+  color: var(--white-black);
 }
 
 

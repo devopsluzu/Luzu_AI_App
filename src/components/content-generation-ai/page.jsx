@@ -450,7 +450,7 @@ export default function PuterChat() {
             <input type="text" value={input} placeholder="Type your message..." onChange={handleInputChange} onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}/>
             <div className='chat-input-generate-button' style={{ backgroundColor: buttonHl ?  '#414abb' : '#515bda'  }} onClick={handleSendMessage}>
               <p>Generate</p>
-              <Image src={prfecBtn} alt='prfec'/>
+              <Image src={prfecBtn} alt='button'/>
             </div>
           </div>
           </div>

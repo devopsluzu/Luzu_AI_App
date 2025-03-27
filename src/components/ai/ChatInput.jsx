@@ -80,11 +80,11 @@ export default function ChatInput({ input, setInput, handleSendMessage, buttonHl
         />
         <div 
           className={`chat-input-generate-button ${isTyping ? "loading" : ""}`} 
-          style={{ backgroundColor: buttonHl ? '#414abb' : '#515bda',height:"100%" }}
+          style={{ backgroundColor: buttonHl ? 'var(--black-white)' : 'var(--black-white)',height:"100%" }}
           onClick={handleSendMessage}
         >
           <p>Generate</p>
-          <Image src={prfecBtn} alt="prfec" />
+          {/* <Image src={prfecBtn} alt="luzu" /> */}
         </div>
       </div>
 

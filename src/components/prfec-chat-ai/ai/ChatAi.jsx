@@ -302,7 +302,7 @@ const Chatbot = ({ chatId }) => {
                         <div className={`prfec-chat-input-generate-button ${loading ? 'change' : ''}`} onClick={sendMessage}>
                          {/* <IoMdArrowUp style={{fontSize:"24px",fontWeight:"400", color:"var(--white-black)"}}/> */}
                          Generate
-                        <Image src={prfecBtn} alt="prfec" />
+                        {/* <Image src={prfecBtn} alt="prfec" /> */}
                         </div>
 
                     </div>

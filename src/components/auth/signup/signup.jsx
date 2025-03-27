@@ -202,7 +202,7 @@ useEffect(() => {
                 )}
 
                 <p className="signup-terms">
-                    By signing up, you agree to our <Link href="https://prfec.ai/terms-of-service">Terms of services</Link> and <Link href="https://prfec.ai/privacy-policy">Privacy Policy</Link>.
+                    By signing up, you agree to our <Link href="https://luzu.ai/terms-of-service">Terms of services</Link> and <Link href="https://prfec.ai/privacy-policy">Privacy Policy</Link>.
                 </p>
             </div>
         </div>
