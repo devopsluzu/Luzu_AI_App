@@ -97,7 +97,7 @@ const client = new SecretManagerServiceClient();
 
 async function getSecret() {
   const [version] = await client.accessSecretVersion({
-    name: "projects/592134571427/secrets/GROQ_API_KEY/versions/latest",
+    name: "projects/534452319131/secrets/GROQ_API_KEY/versions/latest",
   });
   return version.payload.data.toString().trim();
 }
