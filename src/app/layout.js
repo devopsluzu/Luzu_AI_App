@@ -32,6 +32,8 @@ import { KeywordPromptProvider } from '@context/KeywordPromptContext';
 import { CompetitorPromptProvider } from '@context/CompetitorPromptCount';
 import ClientOnlyContent from './ClientOnlyContent';
 import { ThemeProvider } from 'next-themes';
+import {GoogleAnalytics} from '@next/third-parties/google'
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -51,6 +53,8 @@ export default function RootLayout({ children }) {
                 <ChatPromptProvider>
             <ThemeProvider attribute="class">
                 <ClientOnlyContent>{children}</ClientOnlyContent>
+                <GoogleAnalytics gaId="G-RSWM44431B" />
+
                 </ThemeProvider>
                 </ChatPromptProvider>
                 </CompetitorPromptProvider>
