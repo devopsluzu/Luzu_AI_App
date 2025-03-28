@@ -83,7 +83,7 @@ useEffect(() => {
     
         try {
             // Store the data in the Firebase Realtime Database
-            await axios.put(`https://prfecai-auth-default-rtdb.firebaseio.com/usersData/${firstName}.json`, {
+            await axios.put(`https://luzu-ai-app-default-rtdb.firebaseio.com/usersData/${firstName}.json`, {
                 email,
                 firstName,
                 method,
@@ -117,7 +117,7 @@ useEffect(() => {
             console.log(actionCodeSettings)
 
             // Call the backend to send the sign-in link
-            await axios.post('https://prfecai-backend-592134571427.us-central1.run.app/api/sendSignInEmail', {
+            await axios.post('https://luzuai-backend-534452319131.us-central1.run.app/api/sendSignInEmail', {
                 email,
                 link: actionCodeSettings.url,
             });
