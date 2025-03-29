@@ -34,6 +34,14 @@ import ClientOnlyContent from './ClientOnlyContent';
 import { ThemeProvider } from 'next-themes';
 import {GoogleAnalytics} from '@next/third-parties/google'
 
+export const metadata = {
+  title: "Luzu AI",
+    openGraph: {
+      type: "website",
+      url: "https://app.luzu.ai",
+      title: "Luzu AI",
+    },
+};
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

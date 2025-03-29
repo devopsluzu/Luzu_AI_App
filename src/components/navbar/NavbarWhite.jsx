@@ -3,8 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import '@styles/navbar/NavbarWhite.css';
 import Image from 'next/image';
 // import Logo from '@public/Images/ai/nohover.svg';
-import whiteLogo from '@public/Images/navbar/Prfec Logo White.svg'
-import blackLogo from '@public/Images/navbar/prfec-logo.svg'
+import whiteLogo from '@public/Images/navbar/logo-white.png'
+import blackLogo from '@public/Images/navbar/logo-black.png'
 import { useTheme } from "next-themes";
 
 import Hamburger from '@public/Images/navbar/hamburger.png';
@@ -73,10 +73,8 @@ export const NavbarWhite = () => {
     <div className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo" onClick={() => handleNavigation("/")}>
-          {/* <Image className="prfec-logo" src={Logo} alt="Logo" height={20} /> */}
-          <div style={{fontSize:"16px",fontFamily:"var(--h-font)",fontWeight:"500",color:"var(--black-white)"}}>
-            Luzu AI
-          </div>
+          <Image className="luzu-logo" src={Logo} alt="Logo" height={22} />
+
         </div>
         <div className="navbar-contents">
           <Link href='https://business.luzu.ai/'>Services</Link>

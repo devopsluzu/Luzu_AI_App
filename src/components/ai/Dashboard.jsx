@@ -10,8 +10,8 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useTheme } from 'next-themes';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { IoSettingsOutline } from "react-icons/io5";
-import whiteLogo from '@public/Images/navbar/Prfec Logo White.svg'
-import blackLogo from '@public/Images/navbar/prfec-logo.svg'
+import whiteLogo from '@public/Images/navbar/logo-white.png'
+import blackLogo from '@public/Images/navbar/logo-black.png'
 import Image from 'next/image';
 const INITIAL_VISIBLE_CHATS = 5;
 
