@@ -5,13 +5,7 @@
     font-family: var(--h-font);
 }
 
-.heading1 {
-    color: var(--h-color);
-    margin-top: 10px;
-    font-family: var(--h-font);
-    font-size: 18px;
-    font-weight: 700;
-}
+
 
 .content li {
   list-style-type: disc;
@@ -21,20 +15,13 @@
   font-weight: 400;
   line-height: 160%;
 }
-.meta-description, .content p{
-    color: var(--p-color);
-    margin-top: 6px;
-    font-family: var(--p-font);
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 160%;
-}
+
 /* .content ul{
   padding-left: 1.1rem;
 } */
 /* -------------------------------------------------------------------------------------------- */
 
-.prfec-ai{
+.luzuAi{
     padding-top: 48px;
     background-color: #F8F8F8;
     display: flex;
@@ -45,157 +32,41 @@
     background-color: var(--chat-bg);
     position: relative;
 }
-.prfec-ai-container {
+.luzuAiContainer {
     width: 100%;
     display: flex;
     justify-content: flex-start;
 }
 
-/* @media only screen and (max-width:1024px){
-  .prfec-ai-container{
-    gap: 0;
-  }
-} */
-
-
-/* -----------------------------------------------------AI Dashboard------------------------------------- */
-
-  .ai-dashboard {
-    width: 240px;
-    flex-shrink: 0; /* Prevents shrinking */
-    background-color: var(--prfec-white);
-    padding: 16px 12px;
-    /* z-index: 2; */
-    border-left: 1px solid var(--box-border);
-    position: relative;
-  }
-
-  .ai-dashboard-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    position: sticky;
-    top: 80px;
-  }
-  .ai-chat-heading{
-    font-size: 14px;
-    font-family: var(--h-font);
-    color: var(--h-color);
-    font-weight: 500;
-  }
-  .ai-dashboard-contents {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Adds spacing between the child elements */
-  }
-  .ai-dashboard-title,
-  .ai-dashboard-description,
-  .ai-dashboard-body,
-  .ai-dashboard-category{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  .ai-dashboard-title-input,
-  .ai-dashboard-description-input,
-  .ai-dashboard-body-input,
-  .ai-dashboard-category-input {
-    margin-top: 0.4rem;
-    width: 100%;
-    height: 32px;
-    border: 1px solid var(--box-border);
-    border-radius:4px;
-    padding: 4px 8px ; /* Adds inner spacing inside the input */
-    font-size: 11px; /* Adjust font size */
-    display: flex;
-  }
-  .ai-dashboard-title input,
-  .ai-dashboard-description input,
-  .ai-dashboard-body input,
-  .ai-dashboard-category input {
-    width: 100%;
-    font-size: 11px; /* Adjust font size */
-    color: var(--p-color);
-    font-family: var(--p-font);
-    border: 0px;
-  }
-  .refresh-title-button,.refresh-description-button,.refresh-body-button{
-    display: flex;
-    align-items: center;
-    background-color: var(--prfec-white);
-    padding-left: 6px;
-
-  }
-  
-  .ai-dashboard input:focus {
-    outline: none;
-    border-color: var(--box--border-hover, #007BFF); /* Optional: Add hover effect on focus */
-  }
-  .dashboard-label{
-    font-size: 12px;
-    font-family: var(--p-font);
-    font-weight: 400;
-    color: #3D3D3D;
-  }
-  .badges-container {
-    margin-top: 0.4rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .badges-container span{
-    background-color: #F8F8F8;
-    padding: 4px 6px;
-    border-radius: 4px;
-    font-size: 10px;
-    font-family: var(--p-font);
-  }
-  @media only screen and (max-width:1024px){
-    .ai-dashboard{
-      display: none;
-    }
-    .ai-dashboard.active{
-      width: 85%;
-      display: flex;
-      position: fixed;
-      position: fixed;
-        left: -12px;
-        top: -12px;
-        height: 100%;
-      border-radius: 0px;
-      box-shadow: 200px 0px 0px 0px rgba(0, 0, 0, 0.30);
-    }
-  }
 /* ------------------------------------------------------------Chat container-------------------------------------------- */
-.content-gen-space{
+.contentGenSpace{
   flex-grow: 1;
   height: 100%;
   position: relative;
   padding: 24px;
   padding-top: 24px;
-  /* padding-bottom: 74px; */
   padding-bottom: 60px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-.chat-space {
+.chatSpace{
   width: 80%;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--box-border);
   border-radius: 20px;
-  background-color: var(--prfec-white);
+  background-color: var(--luzu-white);
   min-height: 100%; /* Ensures the initial height is 100% */
   height: auto; /* Allows the height to grow dynamically */
   border-radius: 24px;
   border: 0px;
   background-color: inherit;
 }
-.empty-state-title{
+.chatSpace.centerContent{
+    justify-content: center;
+}
+.emptyStateTitle{
   font-size: 32px;
   font-family: var(--h-font);
   color: var(--dashboard-h-color);
@@ -207,42 +78,37 @@
   justify-content: center;
   align-items: center;
 }
-.chat-container {
+.chatContainer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  flex-grow: 1; /* Allows the container to grow with the content */
-  overflow-y: auto; /* Enables scrolling if the content exceeds the available space */
-  /* max-height: calc(100vh - 150px);  */
+  flex-grow: 1; 
+  overflow-y: auto; 
   max-height:max-content;
-  overflow-y: inherit; /* Enables scrolling if the content exceeds the available space */
+  overflow-y: inherit; 
   height: max-content;
 }
-
-.chat-contents {
+.chatContents{
   display: flex;
   flex-direction: column;
   gap: 1rem;
   /* padding: 16px 24px; */
 }
 
-
-
-/* Hide the scrollbar */
-.chat-container::-webkit-scrollbar {
+.chatContainer::-webkit-scrollbar {
     display: none;
 }
 
-.ai-message {
+.aiMessage{
     text-align: left;
 }
 
-.user-message {
+.userMessage {
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
-.user-message-text{
+.userMessageText{
   font-size: 16px;
   font-family: var(--h-font);
   color: var(--h-color);
@@ -252,23 +118,29 @@
   padding: 12px;
 width: max-content;
 }
-/* @media only screen and (max-width:1024px){
-  .content-gen-space{
-    padding-right: 12px;
-  } 
-} */
 
+.heading1 {
+    color: var(--h-color);
+    margin-top: 10px;
+    font-family: var(--h-font);
+    font-size: 18px;
+    font-weight: 700;
+}
+.meta-description, .content p{
+    color: var(--p-color);
+    margin-top: 6px;
+    font-family: var(--p-font);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 160%;
+}
 @media only screen and (max-width:1024px){
-  /* .content-gen-space{
-    padding: 1rem 1rem 70px 1rem;
-    height: max-content;
-  } */
-  .chat-container {
+  .chatContainer {
     max-height:max-content;
-    overflow-y: inherit; /* Enables scrolling if the content exceeds the available space */
-    height: max-content;/* Adjust max-height to fit within the viewport if needed */
+    overflow-y: inherit; 
+    height: max-content;
   }
-  .chat-contents{
+  .chatContents{
     padding: 12px;
   }
   .chat-space{
@@ -286,10 +158,10 @@ width: max-content;
   .chat-space{
     width: 95%;
   }
-  .chat-contents{
+  .chatContents{
     padding: 0px;
   }
-  .content-gen-space{
+  .contentGenSpace{
     padding: 0.5rem;
     padding-top: 1.5rem;
     padding-bottom: 70px;
@@ -297,7 +169,7 @@ width: max-content;
 }
 /* --------------------------------------------------------------------------------------------------------- */
 
-.chat-action-buttons{
+.chatActionButtons{
   border-top: 1px solid var(--box-border);
   padding: 10px 34px;
   display: flex;
@@ -305,31 +177,31 @@ width: max-content;
   justify-content: flex-end;
   display: none;
 }
-.chat-action-buttons-mobile{
+.chatActionButtonsMobile{
   padding: 10px;
   display: flex;
   gap: 2rem;
   justify-content: flex-end;
 }
-.chat-action-buttons-left{
+.chatActionButtonsLeft{
   /* display: flex;
   align-items: center; */
   display: none;
 }
-.chat-action-buttons-right{
+.chatActionButtonsRight{
   display: flex;
   gap: 0.8rem;
   justify-content: flex-end;
   align-items: center;
 }
-.copy-chat-button, .refresh-chat-button, .download-chat-button{
+.copyChatButton, .refreshChatButton, .downloadChatButton{
 display: flex;
 align-items: center;
 }
-.chat-button-label{
+.chatButtonLabel{
 position: relative;
 }
-.chat-button-label-copied{
+.chatButtonLabelCopied{
 background-color: #F8F8F8;
 border: 1px solid var(--box-border);
 padding: 6px;
@@ -342,31 +214,31 @@ bottom: 10px;
 }
 @media screen and (max-width:1024px){
 
-  .chat-action-buttons-mobile {
+  .chatActionButtonsMobile {
     padding: 10px;
     display: flex;
     gap: 2rem;
     justify-content: space-between;
   }
-  .chat-action-buttons-left{
+  .chatActionButtonsLeft{
     display: flex;
     align-items: center;
   }
 
 }
 @media screen and (max-width:800px){
-  .chat-action-buttons-mobile {
+  .chatActionButtonsMobile {
     padding-bottom: 40px;
   }
 }
 @media screen and (max-width:600px){
-  .chat-action-buttons-mobile {
+  .chatActionButtonsMobile {
     padding-bottom: 100px;
   }
 }
 /* ---------------------------------------------------------------------------------------------- */
 
-.chat-input{
+.chatInput{
   width: 80%;
   bottom: 0px;
   display: flex;
@@ -379,23 +251,15 @@ bottom: 10px;
   flex-direction: column;
   gap: 0.5rem;
 }
-.chat-input-upgrade{
+.chatInputUpgrade{
   width: 100%;
-  /* display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid var(--chat-border);
-  border-radius: 13px;
-  padding: 10px;
-  background-color: var(--chat-bg);
-  position: relative; */
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   bottom: 70px;
 }
-.chat-input-upgrade-container{
+.chatInputUpgradeContainer{
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -406,13 +270,13 @@ bottom: 10px;
   background-color: var(--chat-bg);
   position: relative;
 }
-.chat-input-upgrade p{
+.chatInputUpgrade p{
   font-size: 13px;
   font-family: var(--p-font);
   color: var(--p-color);
   font-weight: 400;
 }
-.chat-input-upgrade button{
+.chatInputUpgrade button{
   margin-right: 28px;
   width: max-content;
   height: max-content;
@@ -425,11 +289,11 @@ bottom: 10px;
   font-weight: 400;
   background-color: var(--dashboard-bg);
 }
-.chat-input-upgrade-close{
+.chatInputUpgradeClose{
   position: absolute;
   right: 12px;
 }
-.chat-input-container {
+.chatInputContainer {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -446,7 +310,7 @@ bottom: 10px;
   padding: 16px;
   border-radius: 12px;
   border: 1px solid var(--box-border);
-  background-color: var(--prfec-white);
+  background-color: var(--luzu-white);
   display: flex;
   justify-content: space-between;
   gap: 2rem;
@@ -454,10 +318,10 @@ bottom: 10px;
 .limit-reached-message p{
   font-size: 13px;
   font-family: var(--p-font);
-  color: var(--prfec-black);
+  color: var(--luzu-black);
   font-weight: 400px;
 }
-.chat-input-container input{
+.chatInputContainer input{
     width: 100%;
     height: 36px;
     margin: 0px;
@@ -467,27 +331,27 @@ bottom: 10px;
     border-radius: 16px;
 }
 
-.chat-input-container input:focus {
+.chatInputContainer input:focus {
     outline: none;
     border: 0px; /* Optional: remove the border if you want */
 }
 
-.chat-input-container button{
+.chatInputContainer button{
     height: 40px;
     padding: 0px 8px;
     border: 0px;
     background-color: inherit;
 }
-.chat-input-generate-button{
+.chatInputGenerateButton{
   height: 100%;
   padding: 0px 20px;
-  background-color: var(--prfec-black);
+  background-color: var(--luzu-black);
   border-radius: 13px;
   display: flex;
   align-items: center;
   gap: 0.4rem;
 }
-.chat-input-prompt-info{
+.chatInput-prompt-info{
   display: none;
 }
 @keyframes blink {
@@ -496,29 +360,29 @@ bottom: 10px;
   100% { opacity: 1; }
 }
 
-.chat-input-generate-button.loading{
+.chatInputGenerateButton.loading{
   animation: blink 1.5s infinite;
   pointer-events: none; /* Prevent clicking while loading */
   opacity: 0.7;
 }
 
-.chat-input-generate-button p{
+.chatInputGenerateButton p{
   font-size: 14px;
   font-family: var(--p-font);
   color: var(--white-black);
   font-weight: 400px;
 }
-.chat-input-mobile-button{
+.chatInput-mobile-button{
   display: none;
 }
 /* Add this to your ai.css */
-.loading-skeleton {
+.loadingSkeleton {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
   
-  .skeleton-line {
+  .skeletonLine {
     width: 100%;
     height: 20px;
     background-color: #e0e0e0;
@@ -539,21 +403,21 @@ bottom: 10px;
   }
   
   /* @media only screen and (max-width:1024px){
-    .chat-input{
+    .chatInput{
       padding-right: 12px;
       padding-left: 264px;
     }
   } */
   @media only screen and (max-width:800px){
   
-    .chat-input{
+    .chatInput{
       width: 90%;
       position: fixed;
       bottom: 0px;
       padding-left: 1rem;
       padding-right: 1rem;
     }
-    .chat-input-prompt-info{
+    .chatInput-prompt-info{
       display: block;
       width: 100%;
       font-size: 10px;
@@ -562,10 +426,10 @@ bottom: 10px;
       font-weight: 400;
       text-align: center;
     }
-    /* .chat-input-generate-button{
+    /* .chatInputGenerateButton{
       display: none;
     }
-    .chat-input-mobile-button{
+    .chatInput-mobile-button{
       margin-top: 3px;
       display: flex;
       align-items: center;
@@ -573,7 +437,7 @@ bottom: 10px;
     } */
   }
   @media only screen and (max-width:400px){
-    .chat-input{
+    .chatInput{
       width: 95%;
       padding-left: 0.5rem;
       padding-right: 0.5rem;

@@ -1,11 +1,12 @@
 import React from 'react'
+import styles from '@styles/ai/ContentAi.module.css'
 
 const LoadingSkeleton = () => {
   return (
-    <div className="loading-skeleton ai-message">
-        <div className="skeleton-line"></div>
-        <div className="skeleton-line"></div>
-        <div className="skeleton-line"></div>
+    <div className={`${styles.loadingSkeleton} loading-skeleton ai-message`}>
+        <div className={styles.skeletonLine}></div>
+        <div className={styles.skeletonLine}></div>
+        <div className={styles.skeletonLine}></div>
   </div>
   )
 }

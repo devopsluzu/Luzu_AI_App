@@ -109,7 +109,7 @@
     font-size: 16px;
     font-family: var(--p-font);
     background-color: black;
-    color: var(--prfec-white);
+    color: var(--luzu-white);
     font-weight: 400;
     border-radius: 8px;
     border: 1px solid var(--chat-border);
@@ -117,11 +117,11 @@
  .pricing-page-personal-starter-pricing button:hover,.pricing-page-personal-pro-pricing button:hover,
  .pricing-page-personal-enterprise-pricing button:hover{
     background-color: inherit;
-    color: var(--prfec-black);
+    color: var(--luzu-black);
  }
  .pricing-page-personal-free-pricing button{
     background-color: #f8f8f8;
-    color: var(--prfec-black);
+    color: var(--luzu-black);
     border:1px solid var(--box-border);
 
  }

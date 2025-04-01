@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react';
-import '@styles/ai/settings/Profile.css';
+import styles from '@styles/ai/settings/Profile.module.css';
+
 import Image from 'next/image';
 import edit from '@public/Images/ai/settings/edit.svg';
 import linkedin from '@public/Images/ai/settings/linkedin.svg';
@@ -144,213 +145,219 @@ const Profile = () => {
   
 
   return (
-    <div className="settings-profile">
-      <div className="settings-profile-container">
-
-             <div className="settings-profile-credentials">
-          
-           <div className="settings-profile-credentials-contents">
-             <div className="profile-credentials-title">Name</div>
-            <div className="profile-credentials-edit">
-              {!editState.name && (
-                <div className="profile-credentials-editing">
-                  <p>{profileData.name || ''}</p>
-                  <Image
-                    src={edit}
-                    // onClick={() => handleEditToggle('name')}
-                    onClick={() => setEditState({ ...editState, name: true })}
-                    height={14}
-                    alt="Edit"
-                  />
-                </div>
-              )}
-              {editState.name && (
-                <div className="profile-credentials-save">
-                  <input
-                    className="profile-credentials-save-input"
-                    value={inputValue.name}
-                    onChange={(e) =>
-                      setInputValue({ ...inputValue, name: e.target.value })
-                    }
-                  />
-                  <div className="profile-credentials-save-button">
-                    <button
-                      className="profile-save-btn"
-                      onClick={() => handleSave('name')}
-                    >
-                      Save
-                    </button>
-                    <button
-                      className="profile-cancel-btn"
-                      // onClick={() => handleCancel('name')}
-                      onClick={() => setEditState({ ...editState, name: false })}
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </div>
-              )}
+    <div className={styles.settingsProfile}>
+  <div className={styles.settingsProfileContainer}>
+    <div className={styles.settingsProfileCredentials}>
+      <div className={styles.settingsProfileCredentialsContents}>
+        <div className={styles.profileCredentialsTitle}>Name</div>
+        <div className={styles.profileCredentialsEdit}>
+          {!editState.name && (
+            <div className={styles.profileCredentialsEditing}>
+              <p>{profileData.name || ''}</p>
+              <Image
+                src={edit}
+                onClick={() => setEditState({ ...editState, name: true })}
+                height={14}
+                alt="Edit"
+              />
             </div>
-          </div>
-
-          <div className="settings-profile-credentials-contents">
-             <div className="profile-credentials-title">Email</div>
-             <div className="profile-credentials-edit">
-               <div className="profile-credentials-editing">
-                 <p>{user?.email || ''}</p>
-               </div>
+          )}
+          {editState.name && (
+            <div className={styles.profileCredentialsSave}>
+              <input
+                className={styles.profileCredentialsSaveInput}
+                value={inputValue.name}
+                onChange={(e) =>
+                  setInputValue({ ...inputValue, name: e.target.value })
+                }
+              />
+              <div className={styles.profileCredentialsSaveButton}>
+                <button
+                  className={styles.profileSaveBtn}
+                  onClick={() => handleSave('name')}
+                >
+                  Save
+                </button>
+                <button
+                  className={styles.profileCancelBtn}
+                  onClick={() => setEditState({ ...editState, name: false })}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
-           </div>
-
-          {/* Phone Number Field */}
-          <div className="settings-profile-credentials-contents" id="profile-phone-number">
-            <div className="profile-credentials-title">Phone Number</div>
-            <div className="profile-credentials-edit">
-              {!editState.phone && (
-                <div className="profile-credentials-editing">
-                  <p>{profileData.phone || ''}</p>
-                  <Image src={edit} 
-                  // onClick={() => handleEditToggle('phone')}
-                  onClick={() => setEditState({ ...editState, phone: true })}
-                   height={14} alt="Edit"/>
-                </div>
-              )}
-              {editState.phone && (
-                <div className="profile-credentials-save">
-                  <input className="profile-credentials-save-input" value={inputValue.phone} onChange={(e) =>
-                      setInputValue({ ...inputValue, phone: e.target.value })
-                    }
-                  />
-                  <div className="profile-credentials-save-button">
-                    <button className="profile-save-btn" onClick={() => handleSave('phone')} >
-                      Save
-                    </button>
-                    <button className="profile-cancel-btn" 
-                    // onClick={() => handleCancel('phone')}
-                    onClick={() => setEditState({ ...editState, phone: false })} 
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
+          )}
         </div>
+      </div>
 
-        {/* Links Section */}
-        <div className="settings-profile-links">
-          <div className="settings-profile-links-title">
-            <p>Links</p>
-          </div>
-          <div className="settings-profile-links-social">
-            {/* LinkedIn */}
-            <div className="settings-profile-links-social-container">
-              <div className="settings-profile-links-social-title">
-                <Image src={linkedin} alt="Social Icon" height={14} />
-                <p>LinkedIn</p>
-              </div>
-              {links.linkedin && !linkOpen.linkedin ? (
-                <div className="profile-credentials-editing">
-                  <p>{links.linkedin}</p>
-                  <Image
-                    src={edit}
-                    onClick={() => handleAddOrEditLinkClick('linkedin')}
-                    height={14}
-                    alt="Edit"
-                  />
-                </div>
-              ) : (
-                !linkOpen.linkedin && (
-                  <button
-                    className="social-links-add"
-                    onClick={() => handleAddOrEditLinkClick('linkedin')}
-                  >
-                    Add
-                  </button>
-                )
-              )}
-              {linkOpen.linkedin && (
-                <div className="profile-credentials-save">
-                  <input
-                    ref={linkedinRef}
-                    className="profile-credentials-save-input"
-                    defaultValue={editingLinks.linkedin ? links.linkedin : ''}
-                    placeholder="Enter LinkedIn link"
-                  />
-                  <div className="profile-credentials-save-button">
-                    <button
-                      className="profile-save-btn"
-                      onClick={() => handleSaveLink('linkedin', linkedinRef)}
-                    >
-                      Save
-                    </button>
-                    <button
-                      className="profile-cancel-btn"
-                      onClick={() => handleCancelLink('linkedin')}
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* X */}
-            <div className="settings-profile-links-social-container">
-              <div className="settings-profile-links-social-title">
-                <Image src={x} alt="Social Icon" height={14} />
-                <p>X</p>
-              </div>
-              {links.x && !linkOpen.x ? (
-                <div className="profile-credentials-editing">
-                  <p>{links.x}</p>
-                  <Image
-                    src={edit}
-                    onClick={() => handleAddOrEditLinkClick('x')}
-                    height={14}
-                    alt="Edit"
-                  />
-                </div>
-              ) : (
-                !linkOpen.x && (
-                  <button
-                    className="social-links-add"
-                    onClick={() => handleAddOrEditLinkClick('x')}
-                  >
-                    Add
-                  </button>
-                )
-              )}
-              {linkOpen.x && (
-                <div className="profile-credentials-save">
-                  <input
-                    ref={xRef}
-                    className="profile-credentials-save-input"
-                    defaultValue={editingLinks.x ? links.x : ''}
-                    placeholder="Enter X link"
-                  />
-                  <div className="profile-credentials-save-button">
-                    <button
-                      className="profile-save-btn"
-                      onClick={() => handleSaveLink('x', xRef)}
-                    >
-                      Save
-                    </button>
-                    <button
-                      className="profile-cancel-btn"
-                      onClick={() => handleCancelLink('x')}
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
+      <div className={styles.settingsProfileCredentialsContents}>
+        <div className={styles.profileCredentialsTitle}>Email</div>
+        <div className={styles.profileCredentialsEdit}>
+          <div className={styles.profileCredentialsEditing}>
+            <p>{user?.email || ''}</p>
           </div>
         </div>
       </div>
+
+      {/* Phone Number Field */}
+      <div className={styles.settingsProfileCredentialsContents} id="profilePhoneNumber">
+        <div className={styles.profileCredentialsTitle}>Phone Number</div>
+        <div className={styles.profileCredentialsEdit}>
+          {!editState.phone && (
+            <div className={styles.profileCredentialsEditing}>
+              <p>{profileData.phone || ''}</p>
+              <Image
+                src={edit}
+                onClick={() => setEditState({ ...editState, phone: true })}
+                height={14}
+                alt="Edit"
+              />
+            </div>
+          )}
+          {editState.phone && (
+            <div className={styles.profileCredentialsSave}>
+              <input
+                className={styles.profileCredentialsSaveInput}
+                value={inputValue.phone}
+                onChange={(e) =>
+                  setInputValue({ ...inputValue, phone: e.target.value })
+                }
+              />
+              <div className={styles.profileCredentialsSaveButton}>
+                <button
+                  className={styles.profileSaveBtn}
+                  onClick={() => handleSave('phone')}
+                >
+                  Save
+                </button>
+                <button
+                  className={styles.profileCancelBtn}
+                  onClick={() => setEditState({ ...editState, phone: false })}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
+
+    {/* Links Section */}
+    <div className={styles.settingsProfileLinks}>
+      <div className={styles.settingsProfileLinksTitle}>
+        <p>Links</p>
+      </div>
+      <div className={styles.settingsProfileLinksSocial}>
+        {/* LinkedIn */}
+        <div className={styles.settingsProfileLinksSocialContainer}>
+          <div className={styles.settingsProfileLinksSocialTitle}>
+            <Image src={linkedin} alt="Social Icon" height={14} />
+            <p>LinkedIn</p>
+          </div>
+          {links.linkedin && !linkOpen.linkedin ? (
+            <div className={styles.profileCredentialsEditing}>
+              <p>{links.linkedin}</p>
+              <Image
+                src={edit}
+                onClick={() => handleAddOrEditLinkClick('linkedin')}
+                height={14}
+                alt="Edit"
+              />
+            </div>
+          ) : (
+            !linkOpen.linkedin && (
+              <button
+                className={styles.socialLinksAdd}
+                onClick={() => handleAddOrEditLinkClick('linkedin')}
+              >
+                Add
+              </button>
+            )
+          )}
+          {linkOpen.linkedin && (
+            <div className={styles.profileCredentialsSave}>
+              <input
+                ref={linkedinRef}
+                className={styles.profileCredentialsSaveInput}
+                defaultValue={editingLinks.linkedin ? links.linkedin : ''}
+                placeholder="Enter LinkedIn link"
+              />
+              <div className={styles.profileCredentialsSaveButton}>
+                <button
+                  className={styles.profileSaveBtn}
+                  onClick={() => handleSaveLink('linkedin', linkedinRef)}
+                >
+                  Save
+                </button>
+                <button
+                  className={styles.profileCancelBtn}
+                  onClick={() => handleCancelLink('linkedin')}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* X */}
+        <div className={styles.settingsProfileLinksSocialContainer}>
+          <div className={styles.settingsProfileLinksSocialTitle}>
+            <Image src={x} alt="Social Icon" height={14} />
+            <p>X</p>
+          </div>
+          {links.x && !linkOpen.x ? (
+            <div className={styles.profileCredentialsEditing}>
+              <p>{links.x}</p>
+              <Image
+                src={edit}
+                onClick={() => handleAddOrEditLinkClick('x')}
+                height={14}
+                alt="Edit"
+              />
+            </div>
+          ) : (
+            !linkOpen.x && (
+              <button
+                className={styles.socialLinksAdd}
+                onClick={() => handleAddOrEditLinkClick('x')}
+              >
+                Add
+              </button>
+            )
+          )}
+          {linkOpen.x && (
+            <div className={styles.profileCredentialsSave}>
+              <input
+                ref={xRef}
+                className={styles.profileCredentialsSaveInput}
+                defaultValue={editingLinks.x ? links.x : ''}
+                placeholder="Enter X link"
+              />
+              <div className={styles.profileCredentialsSaveButton}>
+                <button
+                  className={styles.profileSaveBtn}
+                  onClick={() => handleSaveLink('x', xRef)}
+                >
+                  Save
+                </button>
+                <button
+                  className={styles.profileCancelBtn}
+                  onClick={() => handleCancelLink('x')}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   );
 };
 

@@ -2,7 +2,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import '@styles/auth/login.css';
+import styles from '@styles/auth/Signup.module.css';
 import { auth } from '@firebase';  // Firebase auth import
 import { getAuth, signInWithEmailLink } from 'firebase/auth';
 import Box from '@mui/material/Box';
@@ -83,7 +83,7 @@ useEffect(() => {
     
         try {
             // Store the data in the Firebase Realtime Database
-            await axios.put(`https://prfecai-auth-default-rtdb.firebaseio.com/usersData/${firstName}.json`, {
+            await axios.put(`https://luzu-ai-app-default-rtdb.firebaseio.com/usersData/${firstName}.json`, {
                 email,
                 firstName,
                 method,
@@ -117,7 +117,7 @@ useEffect(() => {
             console.log(actionCodeSettings)
 
             // Call the backend to send the sign-in link
-            await axios.post('https://prfecai-backend-592134571427.us-central1.run.app/api/sendSignInEmail', {
+            await axios.post('https://luzuai-backend-534452319131.us-central1.run.app/api/sendSignInEmail', {
                 email,
                 link: actionCodeSettings.url,
             });
@@ -150,62 +150,78 @@ useEffect(() => {
     // if (loading) return <div>Loading...</div>;
 
     return (
-        <div className="login">
-            <div className="login-container">
-                <div className="login-heading">
-                    <h1>Signup</h1>
-                    {generalError && <div className="error-message">{generalError}</div>}
-                </div>
-                {isLinkSent ? (
-                    <div className="success-message">
-                        ✅ A verification link has been sent to <strong>{email}</strong>. Please check your inbox.
-                    </div>
-                ) : (
-                    <form className="form" onSubmit={handleSubmit}>
-                        <Box component="div" noValidate autoComplete="off" className="email" sx={{color:"var(--p-color)"}}>
-                        <TextField
-                            id="outlined-email"
-                            label="Enter your Email"
-                            variant="outlined"
-                            className="custom-text-field"
-                            error={!!emailError}
-                            helperText={emailError}
-                            value={email}
-                            onChange={handleEmailChange}
-                            sx={{ 
-                                color: "var(--p-color)", 
-                                "& .MuiInputBase-input": { color: "var(--p-color)" },  // Input text color
-                                "& .MuiInputLabel-root": { color: "var(--p-color)" },  // Label color
-                                "& .MuiOutlinedInput-root": {
-                                "& fieldset": { borderColor: "var(--p-color)" }, // Border color
-                                "&:hover fieldset": { borderColor: "var(--p-color)" }, // Hover border
-                                "&.Mui-focused fieldset": { borderColor: "var(--p-color)" } // Focused border
-                                }
-                            }}
-                            InputLabelProps={{ style: { color: "var(--p-color)" } }}  // Label color
-                            InputProps={{ style: { color: "var(--p-color)" } }} // Input text color
-                            />
+        <div className={styles.login}>
+  <div className={styles.loginContainer}>
+    <div className={styles.loginHeading}>
+      <h1>Signup</h1>
+      {generalError && <div className={styles.errorMessage}>{generalError}</div>}
+    </div>
 
-                        </Box>
-                        <div className="login-button">
-                            <button className="login-btn" type="submit">Continue with Email</button>
-                        </div>
-                        <div className="google-auth" style={{width: "100%", display: "flex", flexDirection:"column", justifyContent: "center", alignItems: "center",gap:"1.5rem"}}>
-                    {/* <h3 style={{ fontSize: "15px", fontFamily: "var(--p-font)", textAlign: "center", paddingTop: "14px", fontWeight:"400" }}>OR</h3> */}
-                    <div className='google-signin'>
-                        <button className="login-with-google-btn" onClick={handleGoogleSignIn}>
-                            Continue with Google
-                        </button>
-                    </div>
-                </div>
-                    </form>
-                )}
+    {isLinkSent ? (
+      <div className={styles.successMessage}>
+        ✅ A verification link has been sent to <strong>{email}</strong>. Please check your inbox.
+      </div>
+    ) : (
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <Box component="div" noValidate autoComplete="off" className={styles.email} sx={{ color: "var(--p-color)" }}>
+          <TextField
+            id="outlined-email"
+            label="Enter your Email"
+            variant="outlined"
+            className={styles.customTextField}
+            error={!!emailError}
+            helperText={emailError}
+            value={email}
+            onChange={handleEmailChange}
+            sx={{
+              color: "var(--p-color)",
+              "& .MuiInputBase-input": { color: "var(--p-color)" },
+              "& .MuiInputLabel-root": { color: "var(--p-color)" },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": { borderColor: "var(--p-color)" },
+                "&:hover fieldset": { borderColor: "var(--p-color)" },
+                "&.Mui-focused fieldset": { borderColor: "var(--p-color)" },
+              },
+            }}
+            InputLabelProps={{ style: { color: "var(--p-color)" } }}
+            InputProps={{ style: { color: "var(--p-color)" } }}
+          />
+        </Box>
 
-                <p className="signup-terms">
-                    By signing up, you agree to our <Link href="https://luzu.ai/terms-of-service">Terms of services</Link> and <Link href="https://prfec.ai/privacy-policy">Privacy Policy</Link>.
-                </p>
-            </div>
+        <div className={styles.loginButton}>
+          <button className={styles.loginBtn} type="submit">
+            Continue with Email
+          </button>
         </div>
+
+        <div
+          className={styles.googleAuth}
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "1.5rem",
+          }}
+        >
+          {/* <h3 style={{ fontSize: "15px", fontFamily: "var(--p-font)", textAlign: "center", paddingTop: "14px", fontWeight:"400" }}>OR</h3> */}
+          <div className={styles.googleSignin}>
+            <button className={styles.loginWithGoogleBtn} onClick={handleGoogleSignIn}>
+              Continue with Google
+            </button>
+          </div>
+        </div>
+      </form>
+    )}
+
+    <p className={styles.signupTerms}>
+      By signing up, you agree to our <Link href="https://luzu.ai/terms-of-service">Terms of services</Link> and{" "}
+      <Link href="https://luzu.ai/privacy-policy">Privacy Policy</Link>.
+    </p>
+  </div>
+</div>
+
     );
 };
 

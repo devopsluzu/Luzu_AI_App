@@ -1,4 +1,4 @@
-.ai-settings{
+.aiSettings{
     background-color: var(--dashboard-bg);
     border-radius: 16px;
     padding-top: 120px;
@@ -9,18 +9,18 @@
     min-height: 100%; */
     height: 100%;
 }
-.ai-settings-container{
+.aiSettingsContainer{
     width: 70%;
     display: flex;
     gap: 3.5rem;
 }
-.ai-settings-dashboard{
+.aiSettingsDashboard{
     width: 160px;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
-.ai-settings-dashboard div {
+.aiSettingsDashboard div {
     padding: 10px 12px;
     cursor: pointer;
     border-radius: 6px;
@@ -30,32 +30,32 @@
     color: var(--h-color);
   }
   
-  .ai-settings-dashboard div.active {
+  .aiSettingsDashboard div.active {
     color: var(--h-color);
     background-color: var(--dashboard-click-bg); /* Example color */
   }
-.ai-settings-contents{
+.aiSettingsContents{
     flex-grow: 1;
     height: max-content;
     /* padding-top: 6px;
     padding: 24px 32px;
     border: 1px solid var(--box-border);
     border-radius: 16px;
-    background-color: var(--prfec-white); */
+    background-color: var(--luzu-white); */
 }
 
 
 @media only screen and (max-width:1024px){
-    .ai-settings{
+    .aiSettings{
         padding-top: 80px;
         padding-bottom: 60px;
     }
-    .ai-settings-dashboard{
+    .aiSettingsDashboard{
         flex-direction: row;
         width: 100%;
         flex-wrap: wrap;
     }
-    .ai-settings-container{
+    .aiSettingsContainer{
         width: 90%;
         flex-direction: column;
         gap: 1.5rem;
@@ -63,26 +63,26 @@
 }
 
 @media only screen and (max-width:400px){
-    .ai-settings{
+    .aiSettings{
         padding: 0px 14px;
         padding-top: 80px;
         padding-bottom: 60px;
         /* height: 100%; */
     }
-    .ai-settings-container{
+    .aiSettingsContainer{
         width: 100%;
     }
-    .ai-settings-contents{
+    .aiSettingsContents{
         /* padding: 20px; */
     }
-    .ai-settings-dashboard div, .settings-general-theme p, .settings-general-language p, .settings-general-shared-links p, .settings-general-api p{
+    .aiSettingsDashboard div, .settingsGeneralTheme p, .settingsGeneralLanguage p, .settingsGeneralSharedLinks p, .settingsGeneralApi p{
         font-size: 13px;
     }
 }
 
 
 /* -----------------------------------------------------------------General-------------------------------------------------------- */
-.settings-general-contents{
+.settingsGeneralContents{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -90,9 +90,9 @@
     padding: 24px 32px;
     border: 1px solid var(--box-border);
     border-radius: 16px;
-    background-color: var(--prfec-white);
+    background-color: var(--luzu-white);
 }
-.settings-general-theme, .settings-general-language, .settings-general-shared-links, .settings-general-api{
+.settingsGeneralTheme, .settingsGeneralLanguage, .settingsGeneralSharedLinks, .settingsGeneralApi{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -100,20 +100,20 @@
     padding: 12px 0px;
     border-bottom: 1px solid var(--box-border);
 }
-.settings-general-theme{
+.settingsGeneralTheme{
     padding-top: 0px;
 }
-.settings-general-api{
+.settingsGeneralApi{
     padding-bottom: 0px;
     border-bottom: 0px;
 }
-.settings-general-theme p, .settings-general-language p, .settings-general-shared-links p, .settings-general-api p{
+.settingsGeneralTheme p, .settingsGeneralLanguage p, .settingsGeneralSharedLinks p, .settingsGeneralApi p{
     font-size: 14px;
     font-family: var(--p-font);
     color: var(--h-color);
     font-weight: 400;
 }
-.settings-general-theme .theme-change{
+.settingsGeneralTheme .themeChange{
     padding:8px;
     border: 1px solid var(--box-border);
     background-color: #F8F8F8;
@@ -127,19 +127,19 @@
     align-items: center;
     gap: 0.3rem;
 }
-.theme-change .theme-change-contents{
+.themeChange .themeChangeContents{
     position: absolute;
     top: 36px;
     right: -1px;
     padding: 8px 6px;
     border: 1px solid var(--box-border);
     border-radius: 6px;
-    background-color: var(--prfec-white);
+    background-color: var(--luzu-white);
     display: flex;
     flex-direction: column;
     z-index: 1;
 }
-.theme-change-contents .system, .theme-change-contents .light, .theme-change-contents .dark{
+.themeChangeContents .system, .themeChangeContents .light, .themeChangeContents .dark{
     font-size: 12px;
     font-family: var(--p-font);
     color: #4a4a4a; 
@@ -150,10 +150,10 @@
     align-items: center;
     gap: 0.5rem
 }
-.theme-change-contents .system:hover, .theme-change-contents .light:hover, .theme-change-contents .dark:hover{
+.themeChangeContents .system:hover, .themeChangeContents .light:hover, .themeChangeContents .dark:hover{
     background-color: #F8F8F8;
 }
-.settings-general-language .language-change{
+.settingsGeneralLanguage .languageChange{
     padding:8px;
     border: 1px solid var(--box-border);
     background-color: #F8F8F8;
@@ -167,7 +167,7 @@
     align-items: center;
     gap: 2rem;
 }
-.settings-general-shared-links .shared-links,.settings-general-api .api-access{
+.settingsGeneralSharedLinks .sharedLinks,.settingsGeneralApi .apiAccess{
     padding:8px;
     border: 1px solid var(--box-border);
     background-color: #F8F8F8;
@@ -182,13 +182,12 @@
     gap: 0.5rem;
 }
 @media only screen and (max-width:400px){
-    .settings-general-contents{
+    .settingsGeneralContents{
         padding: 20px;
     }
 }
 
-/* --------------------------------------------------------------Data------------------------------------------------- */
-.settings-data{
+/* .settings-data{
     display: flex;
     flex-direction: column;
     width: 100%; 
@@ -196,7 +195,7 @@
     padding: 24px 32px;
     border: 1px solid var(--box-border);
     border-radius: 16px;
-    background-color: var(--prfec-white);
+    background-color: var(--luzu-white);
 }
 .settings-data-contents{
     display: flex;
@@ -233,4 +232,4 @@
     .settings-data{
         padding: 20px;
     }
-}
+} */

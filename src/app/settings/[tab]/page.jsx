@@ -63,7 +63,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import '@styles/ai/settings/Settings.css';
+import styles from '@styles/ai/settings/Settings.module.css';
 import General from '@components/ai/settings/general/General';
 import Billing from '@components/ai/settings/billing/Billing';
 import Profile from '@components/ai/settings/profile/Profile';
@@ -92,42 +92,44 @@ const Settings = () => {
   }, [tab]);
 
   return (
-    <div className="ai-settings">
-      <div className="ai-settings-container">
-        {/* Dashboard Navigation */}
-        <div className="ai-settings-dashboard">
-          {[
-            // 'general', 
-          'profile', 
-          // 'data', 
-          // 'billing',
-          //  'activity', 'updates'
-          ].map((item) => (
-            <div
-              key={item}
-              className={`ai-settings-dashboard-${item} ${
-                activeTab === item ? 'active' : ''
-              }`}
-              onClick={() => handleTabChange(item)}
-            >
-              {item.charAt(0).toUpperCase() + item.slice(1)} {/* Capitalize */}
-            </div>
-          ))}
+<div className={styles.aiSettings}>
+  <div className={styles.aiSettingsContainer}>
+    {/* Dashboard Navigation */}
+    <div className={styles.aiSettingsDashboard}>
+      {[
+        // 'general', 
+        'profile', 
+        // 'data', 
+        // 'billing',
+        // 'activity', 'updates'
+      ].map((item) => (
+        <div
+          key={item}
+          className={`${styles[`aiSettingsDashboard${item.charAt(0).toUpperCase() + item.slice(1)}`]} ${
+            activeTab === item ? styles.active : ''
+          }`}
+          onClick={() => handleTabChange(item)}
+        >
+          {item.charAt(0).toUpperCase() + item.slice(1)} {/* Capitalize */}
         </div>
-
-        {/* Display Content Based on Active Tab */}
-        <div className="ai-settings-contents">
-          {/* {activeTab === 'general' && <General />} */}
-          {activeTab === 'profile' && <Profile />}
-          {/* {activeTab === 'data' && <Data />}
-          {activeTab === 'billing' && <Billing />} */}
-          {/* {activeTab === 'activity' && <Activity />}
-          {activeTab === 'updates' && <Updates />} */}
-
-          {/* Add more tabs as needed */}
-        </div>
-      </div>
+      ))}
     </div>
+
+    {/* Display Content Based on Active Tab */}
+    <div className={styles.aiSettingsContents}>
+      {/* {activeTab === 'general' && <General />} */}
+      {activeTab === 'profile' && <Profile />}
+      {/* {activeTab === 'data' && <Data />}
+      {activeTab === 'billing' && <Billing />} */}
+      {/* {activeTab === 'activity' && <Activity />}
+      {activeTab === 'updates' && <Updates />} */}
+
+      {/* Add more tabs as needed */}
+    </div>
+  </div>
+</div>
+
+
   );
 };
 

@@ -1,6 +1,5 @@
 "use client"; // Make this component run on the client side only
 
-import { Navbar } from './Navbar';
 import { NavbarWhite } from './NavbarWhite';
 import { usePathname } from 'next/navigation';
 import { UserAuth } from '@context/AuthContext';  // Import UserAuth to access the user state

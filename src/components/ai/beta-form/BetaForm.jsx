@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import '@styles/ai/beta-form/BetaForm.css';
+import styles from '@styles/ai/beta-form/BetaForm.module.css';
 
 const BetaForm = () => {
   const [formData, setFormData] = useState({
@@ -63,86 +63,89 @@ const BetaForm = () => {
   };
 
   return (
-    <div className='beta-form'>
-      <div className='beta-form-container'>
-        <div className='beta-form-headline'>
-          <h2>Get Started with Luzu AI Enterprise Model</h2>
+    <div className="betaForm">
+    <div className="betaFormContainer">
+      <div className="betaFormHeadline">
+        <h2>Get Started with Luzu AI Enterprise Model</h2>
+      </div>
+      <form onSubmit={handleSubmit} className="betaFormUserContents">
+        <div className="betaFormFullname">
+          <input
+            type="text"
+            placeholder="First Name"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
+          />
         </div>
-        <form onSubmit={handleSubmit} className='beta-form-user-contents'>
-          <div className='beta-form-fullname'>
-            <input
-              type="text"
-              placeholder='First Name'
-              name='firstName'
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              placeholder='Last Name'
-              name='lastName'
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className='beta-form-credentials'>
-            <input
-              type="email"
-              placeholder='Email ID'
-              name='email'
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              placeholder='Phone Number'
-              name='phone'
-              value={formData.phone}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              placeholder='Country'
-              name='country'
-              value={formData.country}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              placeholder='Profession'
-              name='profession'
-              value={formData.profession}
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              placeholder='Organisation / Institute'
-              name='organization'
-              value={formData.organization}
-              onChange={handleChange}
-            />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-
-        {/* Popup Message */}
-        {isPopupVisible && (
-          <div className='popup'>
-            <p>Thanks for Signing up!</p>
-          </div>
-        )}
-
-        <div className='beta-form-contents'>
-          {/* <p>By joining, you’ll get exclusive access to our latest updates, cutting-edge research, and expert insights into AI advancements.</p> */}
-          <p>Your information will remain private and secure as per our <a href="/privacy-policy">Privacy Policy</a>.</p>
+        <div className="betaFormCredentials">
+          <input
+            type="email"
+            placeholder="Email ID"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Phone Number"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Country"
+            name="country"
+            value={formData.country}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Profession"
+            name="profession"
+            value={formData.profession}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            placeholder="Organisation / Institute"
+            name="organization"
+            value={formData.organization}
+            onChange={handleChange}
+          />
         </div>
+        <button type="submit">Submit</button>
+      </form>
+  
+      {/* Popup Message */}
+      {isPopupVisible && (
+        <div className="popup">
+          <p>Thanks for Signing up!</p>
+        </div>
+      )}
+  
+      <div className="betaFormContents">
+        <p>
+          Your information will remain private and secure as per our{" "}
+          <a href="/privacy-policy">Privacy Policy</a>.
+        </p>
       </div>
     </div>
+  </div>
+  
   );
 };
 

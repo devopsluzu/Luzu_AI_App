@@ -19,7 +19,7 @@ const Theme = () => {
           padding: 8px 6px;
           border: 1px solid var(--box-border);
           border-radius: 6px;
-          background-color: var(--prfec-white);
+          background-color: var(--luzu-white);
           display: flex;
           flex-direction: column;
           z-index: 1;
@@ -66,3 +66,8 @@ const Theme = () => {
 };
 
 export default Theme;
+
+
+
+
+

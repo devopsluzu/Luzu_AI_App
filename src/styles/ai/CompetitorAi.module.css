@@ -1,11 +1,11 @@
-.competitor-analysis{
+.competitorAnalysis{
     padding-top: 48px;
     display: flex;
     min-height: 100%; /* Initially fills full height */
     height: auto; /* Allows growth beyond 100% if needed */
     background-color: var(--chat-bg);
 }
-.competitor-analysis-container{
+.competitorAnalysisContainer{
     width: 100%;
     height: max-content;
     display: flex;
@@ -13,7 +13,7 @@
     gap:1.5rem;
     padding: 2rem 8rem;  
 }
-.competitor-analysis-container-heading{
+.competitorAnalysisContainerHeading{
   font-size: 24px;
   font-family: var(--h-font);
   color: var(--p-color);
@@ -21,30 +21,30 @@
   line-height: 150%;
 }
 @media only screen and (max-width:1300px){
-  .competitor-analysis-container{
+  .competitorAnalysisContainer{
     padding: 2rem 4rem;
   }
 }
 @media only screen and (max-width:1100px){
-  .competitor-analysis-container{
+  .competitorAnalysisContainer{
     padding: 2rem;
   }
-  .competitor-analysis-search-input{
+  .competitorAnalysisSearchInput{
     width: 100%;
   }
 }
 @media only screen and (max-width:600px){
-    .competitor-analysis-container{
+    .competitorAnalysisContainer{
         padding: 2rem 1rem;
         gap: 1.5rem;
     }
-    .competitor-analysis-container-heading{
+    .competitorAnalysisContainerHeading{
       display: none;
     }
 }
 
 /* -------------------------------------------------------------------------------------- */
-.competitor-analysis-search{
+.competitorAnalysisSearch{
     display: flex;
     flex-direction: column;
     gap:4rem;
@@ -54,7 +54,7 @@
     justify-content: center;
     background-color: var(--box-bg);
 }
-.competitor-analysis-search h1{
+.competitorAnalysisSearch h1{
     width: 50%;
     font-size: 32px;
     font-family: var(--h-font);
@@ -63,27 +63,27 @@
     text-align: center;
     line-height: 150%;
 }
-.competitor-analysis-search-input{
+.competitorAnalysisSearchInput{
     width: 80%;
     display: flex;
     gap: 0.3rem;
 }
-.competitor-analysis-search-input input{
+.competitorAnalysisSearchInput input{
     width: 100%;
     margin: 0px;
     padding: 6px 16px;
     height: 42px;
     border: 1px solid var(--box-border);
     border-radius: 8px;
-    background-color: var(--prfec-white);
+    background-color: var(--luzu-white);
     display: flex;
     align-items: center;
-    color: var(--prfec-black);
+    color: var(--luzu-black);
 }
-.competitor-analysis-search-input input:focus{
+.competitorAnalysisSearchInput input:focus{
     outline: none;
   }
-  .competitor-analysis-search-input-button{
+  .competitorAnalysisSearchInputButton{
     padding: 0px 20px;
     background-color: var(--black-white);
     border-radius: 8px;
@@ -104,70 +104,70 @@
     100% { opacity: 1; }
   }
   
-  .competitor-analysis-search-input-button.loading{
+  .competitorAnalysisSearchInputButton.loading{
     animation: blink 1.5s infinite;
     pointer-events: none; /* Prevent clicking while loading */
     opacity: 5;
   }
   
   @media only screen and (max-width:1024px){
-    .competitor-analysis-search h1{
+    .competitorAnalysisSearch h1{
         width: 80%;
     }
   }
   @media only screen and (max-width:1100px){
 
-    .competitor-analysis-search-input{
+    .competitorAnalysisSearchInput{
       width: 100%;
     }
   }
   @media only screen and (max-width:600px){
-    .competitor-analysis-search-input{
+    .competitorAnalysisSearchInput{
         width: 100%;
     }
-    .competitor-analysis-search h1{
+    .competitorAnalysisSearch h1{
       font-size: 28px;
       width: 100%;
     }
   }
   @media only screen and (max-width:400px){
-    .competitor-analysis-search-input{
+    .competitorAnalysisSearchInput{
         flex-direction: column;
     }
-    .competitor-analysis-search-input-button{
+    .competitorAnalysisSearchInputButton{
         justify-content: center;
     }
-    .competitor-analysis-search{
+    .competitorAnalysisSearch{
         gap: 2rem;
         padding: 24px;
     }
-    .competitor-analysis-search h1{
+    .competitorAnalysisSearch h1{
         width: 100%;
     }
   }
   /* ------------------------------------------------- */
-    .competitor-result-canvas{
+    .competitorResultCanvas{
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
-    .competitor-result-canvas h2{
+    .competitorResultCanvas h2{
       font-size: 20px;
       font-family: var(--h-font);
       color: var(--h-color);
       font-weight: 500;
     }
-    .competitor-result-keyword{
+    .competitorResultKeyword{
         display: flex;
         gap: 1rem;
     }
     @media only screen and (max-width:600px){
-        .competitor-result-keyword{
+        .competitorResultKeyword{
             flex-direction: column;
         }
     }
   /* -------------------------------------table--------------------------------------- */
-  .competitor-top-table {
+  .competitorTopTable {
     flex: 1;
     overflow-x: auto;
     padding: 0.5rem;
@@ -177,17 +177,17 @@
   
   }
   
-  .competitor-top-table-scroll {
+  .competitorTopTableScroll {
     max-height: 250px; /* Set the max height */
     overflow-y: auto; /* Enable vertical scrolling */
   }
   
-  .competitor-top-table-container {
+  .competitorTopTableContainer {
     width: 100%;
     border-collapse: collapse;
   }
   
-  .competitor-top-head {
+  .competitorTopHead {
     background-color: inherit;
     border-bottom: 1px solid var(--box-inside-border);
     position: sticky;
@@ -196,7 +196,7 @@
     z-index: 10;
   }
   
-  .competitor-top-row-contents {
+  .competitorTopRowContents {
     padding: 10px;
     text-align: left;
     font-size: 14px;
@@ -205,15 +205,15 @@
     font-family: var(--p-font);
   }
   
-  .competitor-top-body-row {
+  .competitorTopBodyRow {
     border-bottom: 1px solid var(--box-inside-border);
   }
   
-  .competitor-top-body-row:last-child {
+  .competitorTopBodyRow:last-child {
     border-bottom: 0px;
   }
   
-  .competitor-top-body-row-contents {
+  .competitorTopBodyRowContents {
     padding: 10px;
     text-align: left;
     font-size: 13px;
@@ -222,18 +222,18 @@
     font-family: var(--p-font);
   }
   @media only screen and (max-width:400px){
-    .competitor-top-table{
+    .competitorTopTable{
       width: 100%;
     }
   }
   /* -------------------------------------------------------------------- */
-  .competitor-result-score{
+  .competitorResultScore{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 1rem;
   }
-  .competitor-result-score-domain, .competitor-result-score-page,
-  .competitor-result-score-spam, .competitor-result-score-rank{
+  .competitorResultScoreDomain, .competitorResultScorePage,
+  .competitorResultScoreSpam, .competitorResultScoreRank{
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -244,26 +244,26 @@
     background-color: var(--box-bg);
     border: 0px;
   }
-  .competitor-result-score-domain p, .competitor-result-score-page p,
-  .competitor-result-score-spam p, .competitor-result-score-rank p{
+  .competitorResultScoreDomain p, .competitorResultScorePage p,
+  .competitorResultScoreSpam p, .competitorResultScoreRank p{
     font-size: 14px;
     font-weight: 400;
     color: var(--h-color);
     font-family: var(--p-font);
   }
-  .competitor-result-score-domain span, .competitor-result-score-page span,
-  .competitor-result-score-spam span, .competitor-result-score-rank span{
+  .competitorResultScoreDomain span, .competitorResultScorePage span,
+  .competitorResultScoreSpam span, .competitorResultScoreRank span{
     font-size: 20px;
     font-weight: 600;
     color: var(--h-color);
     font-family: var(--p-font);
   }
   @media only screen and (max-width:600px){
-    .competitor-result-score{
+    .competitorResultScore{
         grid-template-columns: repeat(2, 1fr);
     }
   }
   /* ---------------------------------------------------------------- */
-  .competitor-result-top-competitor{
+  .competitorResultTopCompetitor{
     display: flex;
   }
