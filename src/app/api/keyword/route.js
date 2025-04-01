@@ -2,10 +2,16 @@
 
 import { NextResponse } from "next/server";
 import Groq from "groq-sdk";
+import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
 
-// const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-const groq = new Groq({ apiKey: "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" });
+const client = new SecretManagerServiceClient();
 
+async function getSecret() {
+  const [version] = await client.accessSecretVersion({
+    name: "projects/534452319131/secrets/GROQ_API_KEY/versions/latest",
+  });
+  return version.payload.data.toString().trim();
+}
 
 export async function POST(request) {
   try {

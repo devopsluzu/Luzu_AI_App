@@ -153,6 +153,8 @@ import Image from 'next/image';
 // import Logo from '@public/Images/ai/nohover.svg';
 import whiteLogo from '@public/Images/navbar/logo-white.png'
 import blackLogo from '@public/Images/navbar/logo-black.png'
+import whiteLogo from '@public/Images/navbar/logo-white.png'
+import blackLogo from '@public/Images/navbar/logo-black.png'
 import { useTheme } from "next-themes";
 
 import Hamburger from '@public/Images/navbar/hamburger.png';

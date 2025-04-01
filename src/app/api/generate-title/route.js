@@ -1,10 +1,23 @@
 
 import { NextResponse } from 'next/server';
 import Groq from 'groq-sdk';
+import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
 
-// const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-const groq = new Groq({ apiKey: "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" });
+const client = new SecretManagerServiceClient();
 
+async function getSecret() {
+  try {
+    const [version] = await client.accessSecretVersion({
+      name: "projects/534452319131/secrets/GROQ_API_KEY/versions/latest",
+    });
+    const apiKey = version.payload?.data?.toString().trim();
+    if (!apiKey) throw new Error("Failed to retrieve valid API Key.");
+    return apiKey;
+  } catch (error) {
+    console.error("Error fetching secret from Secret Manager:", error);
+    throw new Error("API Key retrieval failed.");
+  }
+}
 
 export async function POST(request) {
   try {
