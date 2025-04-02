@@ -118,10 +118,12 @@ const PrfecAi = ({ chatId }) => {
   };
 
   return (
+    <div className={styles.luzuAi}>
     <div className={`${styles.luzuAiComponent} luzuAiComponent`}>
       {isDesktop && <AiDashboard />}
 
       <Chatbot chatId={chatId} />
+    </div>
     </div>
   );
 };

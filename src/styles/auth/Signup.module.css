@@ -5,10 +5,12 @@
     /* padding-top: 120px;
     padding-bottom: 60px; */
     /* background-color:  #fff4ec; */
-    background-color: var(--dashboard-bg);
+    background-color: var(--chat-bg);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 3rem;
   }
   .loginContainer{
     width:400px;
@@ -41,6 +43,9 @@
     flex-direction: column;
     align-items: center;
     gap:1.2rem;
+  }
+  .loginEmail{
+    display: flex;
   }
   .email, .password{
     width: 100%;

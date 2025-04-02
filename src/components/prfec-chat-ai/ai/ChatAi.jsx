@@ -574,7 +574,11 @@ const Chatbot = ({ chatId }) => {
     return (
 <div className={styles.luzuChat}>
     <div className={styles.luzuChatContainer}>
-        <div className={styles.luzuChatMsgContainer}>
+        <div className={`${styles.luzuChatMsgContainer} ${!messages.some((msg) => msg.role === 'bot') && !loading ? styles.centerContent : ""}`}>
+            {!messages.some((msg) => msg.role === 'bot') && !loading && (
+              <h2 className={styles.emptyStateTitle}>How can I help you today?</h2>
+            )}
+            
             {messages.map((msg, index) => (
                 <div key={index} className={`${styles.tcMsgs} ${msg.role === "user" ? styles.user : styles.bot}`}>
                     <div dangerouslySetInnerHTML={{ __html: markdown.parse(String(msg.content)) }} />

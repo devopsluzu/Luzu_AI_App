@@ -896,7 +896,7 @@ const AiDashboard = ({ menuOpen, setMenuOpen }) => {
                 key={prompt.chatId} 
                 className={`${styles.contentGenerationRecentSearch} ${pathname.startsWith(`/content-generation/${prompt.chatId}`) ? styles.active : ''}`}
               >
-                {prompt.message}
+              {prompt.message.replace(/^blog about\s*/i, '')}
               </Link>
             ))}
             {visiblePrompts < recentPrompts.length && (

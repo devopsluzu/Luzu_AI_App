@@ -2,6 +2,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import whiteLogo from '@public/Images/navbar/logo-white.png'
+import blackLogo from '@public/Images/navbar/logo-black.png'
 import styles from '@styles/auth/Signup.module.css';
 import { auth } from '@firebase';  // Firebase auth import
 import { getAuth, signInWithEmailLink } from 'firebase/auth';
@@ -11,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import validator from 'email-validator';
 import axios from 'axios';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useTheme } from "next-themes";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -19,6 +23,7 @@ const Login = () => {
     const [isLinkSent, setIsLinkSent] = useState(false);
     const [loading, setLoading] = useState(true);
     const router = useRouter();
+  const { theme , systemTheme } = useTheme();
 
 useEffect(() => {
         const handleSignIn = async () => {
@@ -148,9 +153,11 @@ useEffect(() => {
     };
 
     // if (loading) return <div>Loading...</div>;
-
+    const currentTheme = theme === "system" ? systemTheme : theme;
+    const logo = currentTheme === "dark" ? whiteLogo : blackLogo;
     return (
         <div className={styles.login}>
+          {/* <Image src={logo} style={{height:"28px",width:"auto"}} alt='luzu logo'/> */}
   <div className={styles.loginContainer}>
     <div className={styles.loginHeading}>
       <h1>Signup</h1>
@@ -163,6 +170,7 @@ useEffect(() => {
       </div>
     ) : (
       <form className={styles.form} onSubmit={handleSubmit}>
+        {/* <div className={styles.loginEmail}> */}
         <Box component="div" noValidate autoComplete="off" className={styles.email} sx={{ color: "var(--p-color)" }}>
           <TextField
             id="outlined-email"
@@ -193,6 +201,7 @@ useEffect(() => {
             Continue with Email
           </button>
         </div>
+        {/* </div> */}
 
         <div
           className={styles.googleAuth}

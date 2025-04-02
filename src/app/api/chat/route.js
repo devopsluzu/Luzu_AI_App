@@ -1,4 +1,4 @@
-// // app/api/chat/route.js
+// app/api/chat/route.js
 // import { NextResponse } from 'next/server';
 // import Groq from 'groq-sdk';
 
